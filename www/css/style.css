@@ -1,0 +1,90 @@
+body{
+    background-color: black;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.square{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.square span:nth-child(1){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient( transparent 40%, #ff0057, #ff0057 100%);
+    box-shadow: 0 0 50px #ff0057, 25 0 255px #ff0057, inset 0 0 50px #ff0057, 25 0 200px ;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: animate1 4s linear infinite;
+    
+}
+.square span:nth-child(2){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient( transparent 20%, #ff0057, #ff0057 100%);
+    box-shadow: 0 0 50px #ff0057, 0 0 100px #ff0057, 0 0 150px #ff0057, 0 0 200px ;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: animate2 8s linear infinite;
+    
+}
+    
+.square span:nth-child(3){
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient( transparent 90%, #ff0057, #ff0057 200%);
+    box-shadow: 0 0 50px #ff0057, 24 0 100px #ff0057, 0 0 50px #ff0057, 25 0 255px ;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: animate3 8s linear infinite;
+    
+}
+    
+@keyframes animate1 {
+    0%{
+        transform: rotate(0deg);
+        
+    }
+    100%{
+        transform: rotate(360deg);
+        
+    }
+}
+
+@keyframes animate2 {
+    0%{
+        transform: rotate(0deg);
+        
+    }
+    100%{
+        transform: rotate(360deg);
+        
+    }
+}
+
+@keyframes animate3 {
+    0%{
+        transform: rotate(0deg);
+        
+    }
+    100%{
+        transform: rotate(360deg);
+        
+    }
+}
+    

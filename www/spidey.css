@@ -1,0 +1,31 @@
+/* spidey.css */
+
+#slider-range, #slider-test {
+    margin: 20px 0;
+    width: 250px;
+}
+
+.ui-slider {
+    background: #333;
+    border: none;
+    height: 8px;
+}
+
+.ui-slider .ui-slider-handle {
+    width: 15px;
+    height: 15px;
+    background: #ff0057;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    top: -4px;
+}
+
+.ui-slider .ui-slider-handle:hover {
+    background: #ff3377;
+}
+
+.ui-slider .ui-slider-range {
+    background: #ff0057;
+}
+
