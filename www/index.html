@@ -30,7 +30,14 @@
 
     <link rel="stylesheet" href="spidey.css" />
 
+    <link rel="stylesheet" href="bgparticles.css" />
+
     <link rel="stylesheet" href="assets/vendore/assets/animate.css" />
+
+    <!--icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!--<link rel="stylesheet" href="style.css">-->
 
     
 
@@ -60,9 +67,45 @@
               </div>
             </div>
           </div>
-          <div class="text-center">
-            <h2 class="text-center text text-white">Webster Here!</h2>
-            <h5 class="text-center text text-white">Ask me Anything</h5>                    
+          <div class="text-center" style="position: relative; margin-top: 20px;">
+            <div class="text-wrapper">
+              <div class="webster-title mb-3">
+                <h2 class="text-center text text-white">Webster Here!</h2>
+              </div>
+              <div class="webster-subtitle mb-4">
+                <h5 class="text-center text text-white">Ask me Anything</h5>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="text-center">
+                <div id="TextInput" class="d-flex">
+
+                  <input
+                    class="input-field"
+                    type ="text"
+                    name = "chatbox"
+                    id="chatbox"
+                    placeholder="Ask here...">
+
+                    <button id ="MicButton"
+                      class="glow-on-hover">
+                      <i class="bi bi-mic"></i>
+                    </button>
+
+                    <button id ="ChatButton"
+                      class="glow-on-hover">
+                      <i class="bi bi-chat-dots"></i>
+                    </button>
+
+                    <button id ="SettingsButton"
+                      class="glow-on-hover">
+                      <i class="bi bi-gear"></i>
+                    </button>
+                    
+
+                </div>
+
+            </div>                    
           </div>
         <div class="col-md-1"></div>
       </div>
@@ -70,6 +113,12 @@
 
     <!--spidey.js-->
     <script src="spidey.js"></script>
+
+    <div id="particles-js" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 0;"></div>
+    <script src="bgparticles.js"></script>
+    <script src = "app.js"></script>
+
+    
 
     
     <!--jquery
@@ -84,6 +133,17 @@
       crossorigin="anonymous"
     ></script>
 
+    <!--particle js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+
+
+    
+    
+    
+    
+
     <!--texllate js-->
     <script src ="assets/vendore/assets/jquery.fittext.js"></script>
     <script src ="assets/vendore/assets/jquery.lettering.js"></script>
@@ -92,6 +152,17 @@
     <script src="main.js"></script>
 
     <script src ="/eel.js"></script>
+
+
+    <div id="particles-js" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1;"></div>
+    <script src="bgparticles.js"></script>
+    <script src = "app.js"></script>
+
+    
+
+    
+    
+    
     
   </body>
 </html>
