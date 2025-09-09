@@ -11,17 +11,7 @@ $(document).ready(function () {
     });    
 });
 
-$('.siri-message').textillate({
-        loop: true,
-        in: {
-            effect: 'fadeInUp',
-            sync: false
-        },
-        out: {
-            effect: 'fadeOutUp',
-            sync: false
-        }
-    });
+
 
 //Siri Config
 var siriWave = new SiriWave({
@@ -34,4 +24,20 @@ var siriWave = new SiriWave({
     autostart: true
   });
 
- 
+// Set styles for the SiriWave container
+var siriContainer = document.getElementById("siri-container");
+siriContainer.style.position = 'absolute';
+siriContainer.style.top = '50%';  // Vertically center
+siriContainer.style.left = '50%'; // Horizontally center
+siriContainer.style.transform = 'translate(-50%, -50%)'; // Offset by half its size to truly center
+
+ $('.text').textillate({
+        loop: true,
+        sync: true,
+        in: {
+            effect: 'fadeInUp',
+        },
+        out: {
+            effect: 'fadeOutUp',
+        }
+    });
