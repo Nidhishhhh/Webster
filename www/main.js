@@ -31,13 +31,23 @@ siriContainer.style.top = '50%';  // Vertically center
 siriContainer.style.left = '50%'; // Horizontally center
 siriContainer.style.transform = 'translate(-50%, -50%)'; // Offset by half its size to truly center
 
- $('.text').textillate({
-        loop: true,
-        sync: true,
-        in: {
-            effect: 'fadeInUp',
-        },
-        out: {
-            effect: 'fadeOutUp',
-        }
-    });
+
+//siri message animation
+$('.text').textillate({
+    loop: true,
+    sync: true,
+    in: {
+        effect: 'fadeInUp',
+    },
+    out: {
+        effect: 'fadeOutUp',
+    }
+});
+    //mic button click event
+$("#MicButton").click(function (e) { 
+    eel.playAssistantSound();    
+    $("#Oval").attr("Hidden", true);
+    $("#SiriWave").attr("Hidden", false);
+        
+});
+    
