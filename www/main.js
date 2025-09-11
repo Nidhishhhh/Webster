@@ -8,13 +8,9 @@ $(document).ready(function () {
         out: {
             effect: 'fadeOut',
         }
-    });    
-});
-
-
-
-//Siri Config
-var siriWave = new SiriWave({
+    }); 
+    //siri config
+    var siriWave = new SiriWave({
     container: document.getElementById("siri-container"),
     width: 800,
     height: 200,
@@ -24,30 +20,41 @@ var siriWave = new SiriWave({
     autostart: true
   });
 
-// Set styles for the SiriWave container
-var siriContainer = document.getElementById("siri-container");
-siriContainer.style.position = 'absolute';
-siriContainer.style.top = '50%';  // Vertically center
-siriContainer.style.left = '50%'; // Horizontally center
-siriContainer.style.transform = 'translate(-50%, -50%)'; // Offset by half its size to truly center
-
-
-//siri message animation
-$('.text').textillate({
-    loop: true,
-    sync: true,
-    in: {
-        effect: 'fadeInUp',
-    },
-    out: {
-        effect: 'fadeOutUp',
-    }
-});
+  $('.siri-message').textillate({
+        loop: true,
+        sync: true,
+        in: {
+            effect: 'fadeInUp',
+        },
+        out: {
+            effect: 'fadeOutUp',
+        }
+    });
     //mic button click event
-$("#MicButton").click(function (e) { 
+    $("#MicButton").click(function (e) { 
     eel.playAssistantSound();    
     $("#Oval").attr("Hidden", true);
     $("#SiriWave").attr("Hidden", false);
         
+    });
+   
+
 });
-    
+
+
+
+
+
+
+// Set styles for the SiriWave container
+//var siriContainer = document.getElementById("siri-container");
+//siriContainer.style.position = 'absolute';
+//siriContainer.style.top = '50%';  
+//siriContainer.style.left = '50%'; 
+//iriContainer.style.transform = 'translate(-50%, -50%)'; 
+
+
+//siri message animation
+
+    //mic button click event
+ 
