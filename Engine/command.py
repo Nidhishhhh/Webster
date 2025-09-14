@@ -19,7 +19,6 @@ def takecommand():
         eel.DisplayMessage("Listening...")
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
-        
         audio = r.listen(source, 10, 6)
         
     try:
