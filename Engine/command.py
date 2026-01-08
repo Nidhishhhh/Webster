@@ -38,18 +38,23 @@ def takecommand():
 @eel.expose 
 def allCommands():
     
-    query = takecommand()
-    print(query)
+    try:
+        query = takecommand()
+        print(query)
     
-    if "open" in query:
-        from Engine.features import openCommand
-        openCommand(query)
+        if "open" in query:
+            from Engine.features import openCommand
+            openCommand(query)
     
-    elif "on YouTube":
-        from Engine.features import PlayYoutube
-        PlayYoutube(query)
-    else:
-        print("No Command Found...")
+        elif "on YouTube":
+            from Engine.features import PlayYoutube
+            PlayYoutube(query)
+        else:
+            print("No Command Found...")
+
+    except:
+        print("error")
+        
         
         
     time.sleep(2)
