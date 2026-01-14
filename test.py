@@ -1,6 +1,5 @@
 
 import pyaudio
-import time
 import struct
 
 import pvporcupine
