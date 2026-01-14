@@ -43,15 +43,64 @@ $(document).ready(function () {
 
         if (e.key === 'j' && e.metaKey) {
             eel.playAssistantSound();
-            $("#Oval").attr("Hidden", true);
-            $("#SiriWave").attr("Hidden", false);
+            $("#Oval").attr("hidden", true);
+            $("#SiriWave").attr("hidden", false);
             eel.allCommands()()
         }
     }
     document.addEventListener('keyup', doc_keyUp, false);
 
-});
+    
+    function PLayAssistant(message){
 
+        if (message != "") {
+            $("#Oval").attr("hidden", true);
+            $("#SiriWave").attr("hidden", false);
+            eel.allCommands(message);
+            $("#chatbox").val("");
+            $("#MicButton").attr("hidden", false);
+            $("#SendButton").attr("hidden", true);
+            
+        }
+    }
+
+
+    function ShowhiddenButtons(message){
+        if (message.length == 0){
+            $("#MicButton").attr("hidden", false);
+            $("#SendButton").attr("hidden", true);
+            
+        }
+        else{
+            $("#MicButton").attr("hidden", true);
+            $("#SendButton").attr("hidden", false);
+            
+        }
+    }
+
+    $("#chatbox").keyup(function() {
+
+        let message = $("#chatbox").val();
+        ShowhiddenButtons(message)
+    });
+
+    $("#SendButton").click(function () {
+
+        let message = $("#chatbox").val()
+        PLayAssistant(message)
+    });
+
+    $("#chatbox").keypress(function (e) {
+        key = e.which;
+        if(key == 13)  // the enter key code
+        {
+            let message = $("#chatbox").val()
+            PLayAssistant(message)
+        }
+    });
+
+
+});
 
 
 
