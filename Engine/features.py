@@ -4,15 +4,15 @@ from playsound import playsound
 import eel
 import os
 from Engine.command import speak
-from Engine.config import Assistant_Name
+from Engine.config import Assistant_Name 
 import pywhatkit as kit
 import re
 import pvporcupine
 import pyaudio
 import struct
 import time
+from Engine.helper import extract_yt_term 
 
-from Engine.helper import extract_yt_term
 
 
 conn = sqlite3.connect("webster.db")
@@ -74,11 +74,8 @@ def hotword():
     audio_stream=None
 
     try:
-        access_key="paste your access key here" #to create access key signup to https://console.picovoice.ai/ 
-    #new version of pvporcupine has a limitation--> you can use only in upto 3 devices in free version. 
-    #you can install older version of pvporcupine --> pip install pvporcupine==1.9.5 , which does not require any access key
-    #if you are using older version of pvporcupine, replace the below line with--> porcupine=pvporcupine.create(keywords=["jarvis","alexa"])
-        porcupine=pvporcupine.create(keywords=["computer","jarvis","alexa"]) #pvporcupine.KEYWORDS for all keywords
+        access_key="paste your access key here"  
+        porcupine=pvporcupine.create(keywords=["computer","jarvis","alexa"]) 
         paud=pyaudio.PyAudio()
         audio_stream=paud.open(rate=porcupine.sample_rate,channels=1,format=pyaudio.paInt16,input=True,frames_per_buffer=porcupine.frame_length)
         while True:
@@ -100,7 +97,17 @@ def hotword():
         if audio_stream is not None:
             audio_stream.close()
         if paud is not None:
-            paud.terminate()          
+            paud.terminate()     
+            
+ 
+ 
 
-
+            
            
+
+
+
+
+
+
+

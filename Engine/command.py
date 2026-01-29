@@ -38,30 +38,35 @@ def takecommand():
 
 @eel.expose 
 def allCommands(message=1):
-    
-    
+
     if message == 1:
         query = takecommand()
-        print(query)
-        eel.senderText(query)
+        print("RAW:", query)
     else:
         query = message
-        eel.senderText(query)
-        
-    try:  
+
+    if not query:
+        print("Empty query")
+        return
+
+    query = query.lower()
+    eel.senderText(query)
+
+    try:
         if "open" in query:
             from Engine.features import openCommand
             openCommand(query)
-    
-        elif "on YouTube":
+
+        elif "on youtube" in query:
             from Engine.features import PlayYoutube
             PlayYoutube(query)
+
         else:
             print("No Command Found...")
 
-    except:
-        print("error")
-        
+    except Exception as e:
+        print("ERROR:", e)
+
         
         
     time.sleep(2)
