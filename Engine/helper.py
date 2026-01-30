@@ -11,3 +11,7 @@ def extract_yt_term(command):
 
 
 
+def markdown_to_text(md):
+    html = markdown2.markdown(md)
+    soup = BeautifulSoup(html, "html.parser")
+    return soup.get_text().strip()

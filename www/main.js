@@ -27,7 +27,7 @@ $(document).ready(function () {
             effect: 'fadeInUp',
         },
         out: {
-            effect: 'fadeOutUp',
+            effect: 'none',
         }
     });
     //mic button click event

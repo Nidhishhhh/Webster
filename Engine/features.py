@@ -4,14 +4,14 @@ from playsound import playsound
 import eel
 import os
 from Engine.command import speak
-from Engine.config import Assistant_Name 
+from Engine.config import Assistant_Name, LLM_KEY
 import pywhatkit as kit
 import re
 import pvporcupine
 import pyaudio
 import struct
 import time
-from Engine.helper import extract_yt_term 
+from Engine.helper import extract_yt_term, markdown_to_text 
 
 
 
@@ -101,6 +101,38 @@ def hotword():
             
  
  
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=LLM_KEY,
+    base_url="https://openrouter.ai/api/v1"
+)
+
+def openai_ai(query):
+    try:
+        # Clean query
+        query = query.replace(Assistant_Name, "")
+        query = query.replace("search", "")
+
+        response = client.chat.completions.create(
+            model="deepseek/deepseek-chat",
+            messages=[
+                {"role": "system", "content": "You are a helpful voice assistant."},
+                {"role": "user", "content": query}
+            ]
+        )
+
+        answer = response.choices[0].message.content
+        filter_text = markdown_to_text(answer)
+
+        speak(filter_text)
+
+        return filter_text  
+    except Exception as e:
+        print("Error in openai_ai:", e)
+        speak("Sorry, I am having trouble right now.")
+        return "ERROR"      
+
 
             
            

@@ -62,7 +62,9 @@ def allCommands(message=1):
             PlayYoutube(query)
 
         else:
-            print("No Command Found...")
+            from Engine.features import openai_ai
+            openai_ai(query)
+
 
     except Exception as e:
         print("ERROR:", e)
