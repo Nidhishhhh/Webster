@@ -1,3 +1,4 @@
+import json
 import sqlite3
 import webbrowser
 from playsound import playsound
@@ -15,8 +16,8 @@ from Engine.helper import extract_yt_term, markdown_to_text
 
 
 
-conn = sqlite3.connect("webster.db")
-cursor = conn.cursor()
+con = sqlite3.connect("webster.db")
+cursor = con.cursor()
 
 #playing assistant sound function on startup
 @eel.expose
@@ -135,11 +136,136 @@ def openai_ai(query):
 
 
             
-           
+con = sqlite3.connect("webster.db", check_same_thread=False)
+cursor = con.cursor()
+
+# ---------------- ASSISTANT NAME ----------------
+Assistant_Name = "My Assistant"
+
+@eel.expose
+def assistantName():
+    return Assistant_Name
 
 
+# ---------------- PERSONAL INFO ----------------
+@eel.expose
+def personalInfo():
+    cursor.execute("SELECT * FROM info LIMIT 1")
+    result = cursor.fetchone()
+
+    if result:
+        eel.getData(json.dumps(result))
+        return 1
+    else:
+        print("No data found")
+        return 0
 
 
+@eel.expose
+def updatePersonalInfo(name, designation, mobileno, email, city):
+    cursor.execute("SELECT COUNT(*) FROM info")
+    count = cursor.fetchone()[0]
+
+    if count == 0:
+        cursor.execute(
+            "INSERT INTO info VALUES (?,?,?,?,?)",
+            (name, designation, mobileno, email, city)
+        )
+    else:
+        cursor.execute(
+            "UPDATE info SET name=?, designation=?, mobileno=?, email=?, city=?",
+            (name, designation, mobileno, email, city)
+        )
+
+    con.commit()
+    personalInfo()
+    return 1
+
+
+# ---------------- SYSTEM COMMANDS ----------------
+@eel.expose
+def displaySysCommands():
+    cursor.execute("SELECT * FROM sys_command")
+    eel.displaySysCommands(json.dumps(cursor.fetchall()))
+    return 1
+
+
+@eel.expose
+def addSysCommand(key, value):
+    cursor.execute(
+        "INSERT INTO sys_command (name, path) VALUES (?,?)",
+        (key, value)
+    )
+    con.commit()
+
+
+@eel.expose
+def deleteSysCommand(id):
+    try:
+        print("Deleting sys_command id:", id, type(id))
+        cursor.execute("DELETE FROM sys_command WHERE id=?", (int(id),))
+        con.commit()
+        return 1
+    except Exception as e:
+        print("Error deleting sys_command:", e)
+        return 0
+
+
+# ---------------- WEB COMMANDS ----------------
+@eel.expose
+def displayWebCommands():
+    cursor.execute("SELECT * FROM web_command")
+    eel.displayWebCommands(json.dumps(cursor.fetchall()))
+    return 1
+
+
+@eel.expose
+def addWebCommand(key, value):
+    cursor.execute(
+        "INSERT INTO web_command (name, url) VALUES (?,?)",
+        (key, value)
+    )
+    con.commit()
+
+
+@eel.expose
+def deleteWebCommand(id):
+    try:
+        print("Deleting web_command id:", id, type(id))
+        cursor.execute("DELETE FROM web_command WHERE id=?", (int(id),))
+        con.commit()
+        return 1
+    except Exception as e:
+        print("Error deleting web_command:", e)
+        return 0
+
+# ---------------- CONTACTS ----------------
+@eel.expose
+def displayContacts():
+    cursor.execute("SELECT * FROM contacts")
+    eel.displayContacts(json.dumps(cursor.fetchall()))
+    return 1
+
+
+@eel.expose
+def addContact(name, mobile, email, address):
+    cursor.execute(
+        "INSERT INTO contacts (name, mobile_no, email, address) VALUES (?,?,?,?)",
+        (name, mobile, email, address)
+    )
+    con.commit()
+
+
+@eel.expose
+def deleteContact(id):
+    try:
+        print("Deleting contact id:", id, type(id))
+        cursor.execute("DELETE FROM contacts WHERE id=?", (int(id),))
+        con.commit()
+        return 1
+    except Exception as e:
+        print("Error deleting contact:", e)
+        return 0
 
 
 

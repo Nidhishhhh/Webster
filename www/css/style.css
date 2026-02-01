@@ -348,3 +348,140 @@ svg {
   max-width: 80%;
   width: auto;
 }
+
+
+
+/* Glass Effect Modal */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Modal text colors */
+.glass-effect .modal-title,
+.glass-effect p,
+.glass-effect strong,
+.glass-effect th,
+.glass-effect td {
+  color: white !important;
+}
+
+/* Glassy form inputs */
+.glassy-form {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 5px;
+}
+
+.glassy-form:focus {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 0, 140, 0.5);
+  box-shadow: 0 0 10px rgba(255, 0, 140, 0.3);
+  color: white;
+}
+
+.glassy-form::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Button styles */
+.btn-style {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.btn-style:hover,
+.btn-style.active {
+  background: rgba(255, 0, 140, 0.3);
+  border-color: rgba(255, 0, 140, 0.5);
+  color: white;
+}
+
+.btn-glow {
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  background-size: 400%;
+  animation: glowing 20s linear infinite;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 8px 16px;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 140, 0.5);
+}
+
+/* Table styles in glass modal */
+.glass-effect .table {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.glass-effect .table th,
+.glass-effect .table td {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 8px 12px;
+}
+
+.glass-effect .table thead th {
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(255, 0, 140, 0.3);
+}
+
+/* Table Scroll Property */
+
+
+.table-scroll {
+  height: 270px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 40px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #272727;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #353535;
+}
+.toast-container{
+  z-index: 9999; 
+}
+
+/* Table Scroll Property */
+
+.delete-btn {
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.9);
+    transform: scale(1.05);
+}
