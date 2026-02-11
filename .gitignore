@@ -1,1 +1,7 @@
 /envwebster
+webster.db
+/Engine/__pycache__/
+/Engine/cookies.json
+/dist
+/build
+/run.spec

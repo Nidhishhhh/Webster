@@ -16,6 +16,10 @@ def listenHowtword():
         
         
 if __name__ == '__main__':
+        import multiprocessing
+        
+        multiprocessing.freeze_support()  # for Windows support
+        
         from multiprocessing import Process
         p1 = Process(target=startWebster)
         p2 = Process(target=listenHowtword)

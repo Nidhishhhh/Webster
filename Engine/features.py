@@ -1,5 +1,6 @@
 import json
 import sqlite3
+from sysconfig import get_path
 import webbrowser
 from playsound import playsound
 import eel
@@ -12,7 +13,7 @@ import pvporcupine
 import pyaudio
 import struct
 import time
-from Engine.helper import extract_yt_term, markdown_to_text 
+from Engine.helper import extract_yt_term, fix_porcuppine__dll_path, get_db_path, markdown_to_text 
 
 
 
@@ -75,8 +76,9 @@ def hotword():
     audio_stream=None
 
     try:
+        fix_porcuppine__dll_path()  # Ensure the Porcupine DLL path is set correctly
         access_key="paste your access key here"  
-        porcupine=pvporcupine.create(keywords=["computer","jarvis","alexa"]) 
+        porcupine=pvporcupine.create(keywords_path=["computer","jarvis","alexa"]) 
         paud=pyaudio.PyAudio()
         audio_stream=paud.open(rate=porcupine.sample_rate,channels=1,format=pyaudio.paInt16,input=True,frames_per_buffer=porcupine.frame_length)
         while True:
@@ -138,6 +140,7 @@ def openai_ai(query):
             
 con = sqlite3.connect("webster.db", check_same_thread=False)
 cursor = con.cursor()
+con = sqlite3.connect(get_db_path())
 
 # ---------------- ASSISTANT NAME ----------------
 Assistant_Name = "My Assistant"
